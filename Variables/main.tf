@@ -35,6 +35,7 @@ variable "inputname" {
     default = "inputname"
 }
 
+
 resource "aws_vpc" "myvpc" {
     cidr_block="10.0.0.0/16"
 
@@ -45,4 +46,17 @@ resource "aws_vpc" "myvpc" {
 
 output "vpcid" {
     value = aws_vpc.myvpc.id
+}
+
+variable "mytuple" {
+    type = tuple([string, number, string])
+    default = ["goat", 56, "cat"]
+}
+
+variable "myobject" {
+    type = object ({ name = string, port = list(number)})
+    default = {
+      name = "JB"
+      port = [ 22, 23, 445 ]
+    }
 }
